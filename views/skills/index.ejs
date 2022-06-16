@@ -7,17 +7,19 @@
     <title>Express Skills</title>
 </head>
 <body>
-    <h1>Skills</h1>
+    <h1>Skills as of <%= time %> </h1>
     <ul>
         <% skills.forEach(skill => { %>
             <li>
-                <%= skill.skill %> 
+                <form action="/<%= skill._id %>?_method=DELETE" class="delete-form" method="POST">
+                <button type="submit">X</button>
+                </form>
+                <a href="/skills/<%= skill._id %>"><%= skill.skill %></a>
                 -
                 <%= skill.masterLevel ? 'Master Level' : 'On the way to the master level' %> 
-                -
-                <%= skill.commmet %> 
             </li>
         <% }) %>
     </ul>
+    <a href="/skills/new">Add Skills</a>
 </body>
 </html>
